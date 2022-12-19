@@ -1,0 +1,88 @@
+.services {
+    background-color: #EEEEEE;
+    color: #333333;
+
+    &__flex-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 240px;          /* Габариты для внешнего блока (как замена отступам во флексе) */
+        width: 100%;           
+        margin: 0;              /* Для отключения списка */
+        padding: 0;             /* Для отключения списка */
+        
+
+        @media @screen-gt-s {
+            & {
+                flex-direction: row;
+                justify-content: space-between;
+                height: 100px;
+            }
+        }
+        @media @screen-gt-m {
+            & {
+                height: 130px;
+            }
+        }        
+    }
+    
+    &__item {
+        list-style-type: none;         /* Для отключения списка */
+        margin-left:0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        min-height: 40px;
+        padding-left: 40px + 20px;      /* Значок + отступ от значка */
+        text-align: left;
+        margin: 0px auto;               /* Выравнивание по центру (в макете непонятно, я так понял по центру надо) */
+        width: 40+20+211px;             /* Значок + отступ + ширина */
+        max-width: 100%;
+        padding-right: 0px;             /* переопределяем для column */
+
+        @media @screen-gt-s {
+            & {
+                width: 210px;                     /* Не понял как математически посчитать через переменые */
+                margin: 30px 0px;
+                padding-left: 40px + 10px;      /* Значок + отступ от значка */
+                height: 40px;
+            }
+            &_type_delivery {
+                padding-right: 41px;             /* посчитал на калькуляторе от макета */
+            }
+            &_type_support {
+                padding-right: 38px;             /* посчитал на калькуляторе от макета */
+            }            
+        }
+        @media @screen-gt-m {
+            & {
+                width: 290;                     /* Не понял как математически посчитать через переменые */
+                margin: 40px 0px;                
+                padding-top:5px;
+                padding-bottom:5px;
+                padding-left: 40px + 30px;      /* Значок + отступ от значка */
+                height: 50px;
+            }
+        }
+ 
+
+    }
+}
+
+@servicons: delivery, return, support; /* перременную обзовём по-другому иначе в yarn конфликт имён */
+
+.services__item-ico {
+        background: no-repeat left center;
+        background-size: 40px 40px;
+
+        each(@servicons, {
+            &_type_@{value} {
+                background-image: url('@{value}.svg');
+            }
+        })
+
+        @media @screen-gt-m {
+            background-size: 50px 50px;
+        }       
+}

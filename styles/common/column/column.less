@@ -5,12 +5,12 @@
 .column-wrapper {
     padding: 0 15px;
 
-    @media @screen-gt-s {
+    @media @screen-gt-s { /* Планшетный режим */
         width: @column-width-m * @column-count-m - @column-padding-m * 2;
         margin: 0 auto;
     }
 
-    @media @screen-gt-m {
+    @media @screen-gt-m { /* Десктопный режим */
         width: @column-width-l * @column-count-l - @column-padding-l * 2;
     }
 }
