@@ -1,6 +1,4 @@
-
-
-.stores{
+.stores {
     padding-left: 0;
     list-style-type: none;          /* Для отключения списка */
     display: block;
@@ -26,7 +24,7 @@
                 padding-left: 30px;
             }
 
-        }        
+        }
 
     }
 
@@ -44,7 +42,7 @@
             margin-bottom: 40px;                   /* по макету 39, но я округлил до 40 */
             
         }
-    }    
+    }
 
 }
 
@@ -63,7 +61,7 @@
                width: 138px;
                float: right;
             }
-        }        
+        }
 
         &:nth-child(2){
             float: right;
@@ -74,25 +72,19 @@
                 }
             }
 
-        }        
-
-
-        each(@storeicons, {
-            &_type_@{value} {
-                background-image: url('@{value}.svg');
-            }
-        })
-
-        &:hover{
-            filter: invert();
-            transition: all 0.2s ease-in;
-            border: 1px solid #888;
         }
 
-        
 
+    each(@storeicons, {
+        &_type_@{value} {
+            background-image: url('@{value}.svg');
+        }
+    })
 
-        @media @screen-gt-m {
-            /* background-size: 50px 50px; */
-        }       
+    &:hover{
+        filter: invert();
+        transition: all 0.2s ease-in;
+        border: 1px solid #888;
+    }
+
 }
