@@ -1,63 +1,50 @@
-/*  */
-
-.social{
-    margin-top: 30px - 8px - 1px;         /* 30 по макету  8 - собственный отступ иконки - 1 бордюр */
+.social {
+    margin-top: 30px - 8px;         /* 30 по макету  8 - собственный отступ иконки */
     margin-bottom: 15px - 8px;      /* половина 30 по макету, 8 собственный отступ */
-    background-color: transparent;
     margin-left: 0;
     padding-left: 0;
     list-style-type: none;          /* Для отключения списка */
           
     &__item {
-        display:inline-block;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        height: 52px;
     }
 
     @media @screen-gt-s {
-        & {
-            margin-top: 34px - 8px - 1px;         /* 34 по макету  8 - собственный отступ иконки - 1 бордюр */
-        }
+        margin-top: 34px - 8px; /* 34 по макету  8 - собственный отступ иконки - 1 бордюр */
+        margin-bottom: 0;
     }
     @media @screen-gt-m {
-        & {
-            margin-top: 40px - 8px - 1px;         /* 34 по макету  8 - собственный отступ иконки - 1 бордюр */
-        }
+        margin-top: 40px - 8px; /* 34 по макету  8 - собственный отступ иконки - 1 бордюр */
     }
 }
-
 
 @socicons: facebook, instagram, twitter, vk; /* перременную обзовём по-другому иначе в yarn конфликт имён */
 
 .social__icon {
-        display:inline-block;
-        background: no-repeat center center  #212122;
-        background-size: 40px 40px; /*  я делал 32, но они какие-то маленькие получились  */
-        border-radius: 50%;
-        width: 34px;                /* 34 это 36 минус бордюр, который 2 */
-        height: 34px;
-        border: 1px solid #CCCCCC; /* цвет из SVG */
-        margin: 8px; /* В макете где-то 15, а где-то 16, примем что везде 16, здесь половинное расстояние */
-        transition: all 0.5s ease-in;
+    display: inline-block;
+    background: no-repeat center center  #212122;
+    background-size: 36px 36px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin: 8px; /* В макете где-то 15, а где-то 16, примем что везде 16, здесь половинное расстояние */
+    transition: all 0.5s ease-in;
 
-        &:nth-child(1){
-            margin-left:0;          /* У первого элемента нету отступа */
+    &:nth-child(1) {
+        margin-left: 0; /* У первого элемента нету отступа */
+    }
+
+    each(@socicons, {
+        &_type_@{value} {
+            background-image: url('@{value}.svg');
         }
+    })
 
-        each(@socicons, {
-            &_type_@{value} {
-                background-image: url('@{value}.svg');
-            }
-        })
-
-        &:hover{
-            filter: invert();
-            transition: all 0.2s ease-in;
-            border: 1px solid #888;
-        }
-
-        
-
-
-        @media @screen-gt-m {
-            /* background-size: 50px 50px; */
-        }       
+    &:hover {
+        filter: invert();
+        transition: all 0.2s ease-in;
+    }
 }

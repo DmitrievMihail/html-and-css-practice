@@ -2,105 +2,74 @@
     background-color: #212122;
 
     &__social {
-        border: 1px solid transparent;
-
         @media @screen-gt-s {
-            & {
-                float: left;
-                width: 50%;
-            }
+            float: left;
+            width: 50%;
         }
-        @media @screen-gt-m {
-            & {
-                width: 33.3%;
-            }
-        }        
     }
 
     &__stores {
         @media @screen-gt-s {
-            & {
-                margin-top: 30px;                
-                float: right;
-                width: 50%;
-                text-align:right;
-            }
+            margin-top: 30px;                
+            float: right;
+            width: 50%;
+            text-align:right;
         }
+
         @media @screen-gt-m {
-            & {
-                margin-top: 30px;                
-                float: left;
-                width: 33.3%;
-                text-align:right;
-            }
+            margin-top: 30px;                
+            float: left;
+            text-align:right;
         }        
     }
-
 }
 
-.footer__logo{
-    display:none;
+.footer__logo {
+    display: none;
 
     @media @screen-gt-m {
-        & {
-            display: block;
-            width: 33.3%;
-            float: right;
-            text-align: right;
-            margin-top: 43px;
-            margin-bottom:40px;
-            filter: invert() grayscale();
-
-            &_href{
-                transition: all 0.5s ease-in;                
-
-                &:hover{
-                    filter: invert() grayscale();
-                    
-                }
-            }
-
+        display: block;
+        float: right;
+        text-align: right;
+        margin-top: 43px;
+        filter: grayscale() invert();
+        transition: all .4s ease-in;
+        
+        &:hover {
+            filter: grayscale();
+            transition: all .2s ease-in;
         }
     }
 }
 
 
 .footer__separator {
-    width:100%;
+    width: 100%;
     border-top: 1px #666 solid;
     margin-top: 30px;
     margin-bottom: 15px;
-    clear:both;
+    clear: both;
+
+    @media @screen-gt-s {
+         margin-bottom: 30px; /* Чтобы текст переносился как в макете  */
+         margin-top: 30px-8px;         
+    }
 
     @media @screen-gt-m {
-        & {
-            margin-bottom: 30px;            /* Чтобы текст переносился как в макете  */
-        }
-    }        
+        margin-top: 30px; /* Чтобы текст переносился как в макете  */
+   }    
 }
 
 .footer__copyright {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
     color: #999;    
     padding-bottom:22px;
-    max-width:250px;            /* Чтобы текст переносился как в макете  */
-
 
     @media @screen-gt-s {
-        & {
-            max-width:600px;            /* Чтобы текст переносился как в макете  */
-            padding-bottom: 29px;
-        }
+        padding-bottom: 29px;
+        margin-left: -15px;        
     }
+    
     @media @screen-gt-m {
-        & {
-            max-width:1000px;
-            padding-bottom: 35px;
-        }
+        padding-bottom: 35px;
     }
 }
-
