@@ -1,64 +1,52 @@
 .stores {
     padding-left: 0;
     list-style-type: none; /* Для отключения списка */
-    display: block;
-    margin: 0 -5px 0 -5px;
-    height: 40px;
+    margin: 30px -2px 0 -4px; /* к сожалению нужны отрицательные margin, без них не помещается т.к. размер больше макетного*/
+    font-size: 0; /* если не обнулить, то вылезают дробные пикслеы от пробелов и переводов строк */
+    line-height: 0;
 
-    &__item{
+    &__item {
         display: inline-block;
-        padding-right: 7px; /* 5 + 2 Компенсация border */
-        
-        &:nth-child(2){
-            float: right;
-        }   
 
         @media @screen-gt-s {
-            padding-right: 3px;
-            width: 150px;
-            float: none;
-
-            &:nth-child(2){
-                padding-right: 5px;
-            }
+            width: 148px; /* в макете размер 140, у меня только такой получается (иначе по сетке нельзя выровнять) */
+            padding-left: 4px; /* или зазор 8px или размер 140px что-то одно надо выбрать, я выбрал отступ, он заметнее */
+            padding-right: 4px; /* половина зазора между иконками */
         }
     }
 
     @media @screen-gt-s {
-        margin-top: 30px;
         float: right;
+        margin-top: 0px;
     }
 
     @media @screen-gt-m {
-        margin-top: 40px;
+        float: none;
     }
-
 }
 
 @storeicons: appstore, googleplay; /* перременную обзовём по-другому иначе в yarn конфликт имён */
 .stores__icon {
-    display: block;
+    display: inline-block;
     background: no-repeat center center #212122;
-    width: 100%;
     height: 38px;
     border: 1px solid #CCCCCC; /* цвет из SVG */
     transition: all 0.5s ease-in;
+    width: 2*@column-width-s;
 
     @media @screen-gt-s {
-        width: 138px;
-        float: right;
+        width: 140px;
     }
 
     each(@storeicons, {
-        &_type_@{value} {
-            background-image: url('@{value}.svg');
+            &_type_@{value} {
+                background-image: url('@{value}.svg');
+            }
         }
-    })
 
-    &:hover{
+    ) &:hover {
         filter: invert();
         transition: all 0.2s ease-in;
         border: 1px solid #888;
     }
-
 }

@@ -1,49 +1,43 @@
+@icon-width: 36px;
+@icon-height: 36px;
+
 .social {
-    margin-top: 30px - 8px;         /* 30 по макету  8 - собственный отступ иконки */
-    margin-bottom: 15px - 8px;      /* половина 30 по макету, 8 собственный отступ */
-    margin-left: 0;
-    padding-left: 0;
-    list-style-type: none;          /* Для отключения списка */
-          
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    line-height: 0px; /* текст (которого нету) неявно влияет на отступ снизу и справа*/
+    font-size: 0px;
+
     &__item {
-        display: inline-block;
         margin: 0;
         padding: 0;
-        height: 52px;
+        font-size: 1px;
+        float: left;
     }
 
     @media @screen-gt-s {
-        margin-top: 34px - 8px; /* 34 по макету  8 - собственный отступ иконки - 1 бордюр */
-        margin-bottom: 0;
-    }
-    @media @screen-gt-m {
-        margin-top: 40px - 8px; /* 34 по макету  8 - собственный отступ иконки - 1 бордюр */
+        margin-top: 4px;
     }
 }
 
 @socicons: facebook, instagram, twitter, vk; /* перременную обзовём по-другому иначе в yarn конфликт имён */
 
 .social__icon {
-    display: inline-block;
-    background: no-repeat center center  #212122;
-    background-size: 36px 36px;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    margin: 8px; /* В макете где-то 15, а где-то 16, примем что везде 16, здесь половинное расстояние */
+    float: left;
+    background: no-repeat center center #212122; /* цвет для фильтра (без цвета фильтр криво работает)*/
+    border-radius: 50%; /* задаёт форму иконки - круг (без радиуса становится квадратной и hover тоже квадратный) */
+    width: @icon-width;
+    height: @icon-height;
+    margin-right: 16px;
     transition: all 0.5s ease-in;
 
-    &:nth-child(1) {
-        margin-left: 0; /* У первого элемента нету отступа */
-    }
-
     each(@socicons, {
-        &_type_@{value} {
-            background-image: url('@{value}.svg');
+            &_type_@{value} {
+                background-image: url('@{value}.svg');
+            }
         }
-    })
 
-    &:hover {
+    ) &:hover {
         filter: invert();
         transition: all 0.2s ease-in;
     }

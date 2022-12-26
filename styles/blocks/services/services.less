@@ -3,77 +3,55 @@
     color: #333333;
 
     &__wrapper {
-        width: 100%;           
-        margin: 0; /* Для отключения списка */
-        padding: 0; /* Для отключения списка */
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        row-gap: 30px;
 
         @media @screen-gt-s {
-            margin: 15px; /* компенсация несхлопывания и отступов */
+            margin-top: 20px; /* Нужен когда больше трёх пунктов */
+            margin-bottom: 20px;            
+            flex-direction: row;
+            flex-wrap: wrap; /* Нужен когда больше трёх пунктов */
+            row-gap: 15px; /* Нужен когда больше трёх пунктов */
         }
-
+        
         @media @screen-gt-m {
-            margin: 22px 15px; /* компенсация несхлопывания и отступов */
-        }        
+            row-gap: 20px; /* Нужен когда больше трёх пунктов */
+        }
     }
     
     &__item {
-        list-style-type: none; /* Для отключения списка */
-        margin-top: 30px; /* это с учётом схлопывания */
-        margin-bottom: 30px; /* это с учётом схлопывания */
-        margin-left: 0;
         line-height: 20px;
-        min-height: 40px;
-        text-align: left;
         max-width: 40px + 20px + 211px; /* Значок + отступ + ширина: здесь и column_s-1 и ширину надо задавать - макет меньше колонки */
         padding-right: 0px;
         padding-top: 7px;
 
-        @media @screen-gt-s {
-            margin-top: 15px; /* тут уже не схлопывается */
-            margin-bottom: 15px; /* тут уже не схлопывается */
-            width: 2 * (@column-width-m - @column-padding-m)  ;
-            margin-right: 2 * @column-padding-m;
-            display: block;
-            float: left;
-            padding-left: 0px; /* Значок + отступ от значка */
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
 
-            &:nth-child(3n) {
-                margin-right: 0; /* У крайних элементов нету отступа */
-            }
+        @media @screen-gt-s {
+            margin-top: 10px; /* Нужен когда больше трёх пунктов */
+            margin-bottom: 10px; /* Нужен когда больше трёх пунктов */
+            column-gap: 10px;
         }
 
         @media @screen-gt-m {
-            margin-top: 22px; /* тут уже не схлопывается */
-            margin-bottom: 22px; /* тут уже не схлопывается */            
-            max-width: 4 * @column-width-l - 2 * @column-padding-l;
-            width: 4 * @column-width-l - @column-padding-l ;
-            margin-right: 2 * @column-padding-l;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            float: left;
+            column-gap: 30px;
         }
      }
 }
 
-@servicons: delivery, return, support; /* перременную обзовём по-другому иначе в yarn конфликт имён */
-
 .services__item-ico {
-        background: no-repeat left center;
-        background-size: 40px 40px;
-        width: 50px;
-        height: 50px;
-        display: block;
-        float: left;
-        margin-top:-7px;
-
-        each(@servicons, {
-            &_type_@{value} {
-                background-image: url('@{value}.svg');
-            }
-        })
+        width: 40px;
+        height: 40px;
+        margin-top: -7px;
 
         @media @screen-gt-m {
-            background-size: 50px 50px;
-            width: 50px + 32px; /* 50px иконка, 32 - в макете отступы немного разные, усреднил */
-        }       
+            width: 50px;
+            height: 50px;
+        }
 }
