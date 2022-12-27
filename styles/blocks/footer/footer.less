@@ -1,15 +1,19 @@
 .footer {
     background-color: #212122;
+    padding: 30px 0 22px 0;
+
+    @media @screen-gt-s {
+        padding: 30px 0 29px 0;
+    }
+
+    @media @screen-gt-m {
+        padding: 40px 0 35px 0;
+    }
 
     &__wrapper {
-        padding: 30px 0;
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-
-        @media @screen-gt-s {
-            padding: 40px 0;
-        }
     }
 
     &__stores {
@@ -29,14 +33,13 @@
     }
 }
 
-
 .footer__logo {
-    display: none;
 
     @media @screen-gt-m {
-        display: block;
         float: right;
         transition: all .4s ease-in;
+        font-size: 0; /* лишние дробные пиксели */
+        line-height: 0;
 
         &:hover {
             filter: invert();
@@ -45,25 +48,22 @@
     }
 }
 
-
 .footer__separator {
     width: 100%;
+    border: 0; /* гасим стили hr */
     border-top: 1px #666 solid;
-    clear: both;
+    margin: 30px 0 15px 0;
+
+    @media @screen-gt-s {
+        margin: 30px 0 30px 0;
+    }
 }
 
 .footer__copyright {
-    margin-top: 15px;
     color: #999;
-    padding-bottom: 22px;
+    margin-left: -5px;
 
     @media @screen-gt-s {
-        margin-top: 30px;
-        padding-bottom: 29px;
         margin-left: -15px;
-    }
-
-    @media @screen-gt-m {
-        padding-bottom: 35px;
     }
 }
