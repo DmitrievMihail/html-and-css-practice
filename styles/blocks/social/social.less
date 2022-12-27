@@ -1,0 +1,45 @@
+@icon-width: 36px;
+@icon-height: 36px;
+
+.social {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    line-height: 0px; /* текст (которого нету) неявно влияет на отступ снизу и справа*/
+    font-size: 0px;
+    height: 36px;
+
+    &__item {
+        margin: 0;
+        padding: 0;
+        font-size: 1px;
+        float: left;
+    }
+
+    @media @screen-gt-s {
+        margin-top: 4px;
+    }
+}
+
+@socicons: facebook, instagram, twitter, vk; /* перременную обзовём по-другому иначе в yarn конфликт имён */
+
+.social__icon {
+    float: left;
+    background: no-repeat center center #212122; /* цвет для фильтра (без цвета фильтр криво работает)*/
+    border-radius: 50%; /* задаёт форму иконки - круг (без радиуса становится квадратной и hover тоже квадратный) */
+    width: @icon-width;
+    height: @icon-height;
+    margin-right: 16px;
+    transition: all 0.5s ease-in;
+
+    each(@socicons, {
+            &_type_@{value} {
+                background-image: url('@{value}.svg');
+            }
+        }
+
+    ) &:hover {
+        filter: invert();
+        transition: all 0.2s ease-in;
+    }
+}

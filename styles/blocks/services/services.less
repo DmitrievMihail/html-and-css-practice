@@ -1,0 +1,51 @@
+.services {
+    background-color: #EEEEEE;
+    color: #333333;
+
+    &__wrapper {
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        row-gap: 30px;
+
+        @media @screen-gt-s {
+            margin-top: 30px; /* Нужен когда больше трёх пунктов */
+            margin-bottom: 30px;
+            flex-direction: row;
+            flex-wrap: wrap; /* Нужен когда больше трёх пунктов */
+            row-gap: 15px; /* Нужен когда больше трёх пунктов */
+        }
+
+        @media @screen-gt-m {
+            row-gap: 20px; /* Нужен когда больше трёх пунктов */
+        }
+    }
+
+    &__item {
+        max-width: 271px; /* Значок + отступ + ширина: здесь и column_s-1 и ширину надо задавать - макет меньше колонки */
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+
+        @media @screen-gt-s {
+            column-gap: 10px;
+        }
+
+        @media @screen-gt-m {
+            column-gap: 30px;
+        }
+    }
+}
+
+.services__item-ico {
+    width: 40px;
+    height: 40px;
+
+
+    @media @screen-gt-m {
+        width: 50px;
+        height: 50px;
+    }
+}

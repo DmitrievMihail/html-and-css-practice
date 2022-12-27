@@ -1,0 +1,69 @@
+.footer {
+    background-color: #212122;
+    padding: 30px 0 22px 0;
+
+    @media @screen-gt-s {
+        padding: 30px 0 29px 0;
+    }
+
+    @media @screen-gt-m {
+        padding: 40px 0 35px 0;
+    }
+
+    &__wrapper {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__stores {
+        margin-top: 30px; /* Только для мобильного */
+
+        @media @screen-gt-s {
+            margin-top: 0;
+            float: right;
+            width: 50%;
+            text-align: right;
+        }
+
+        @media @screen-gt-m {
+            float: left;
+            text-align: right;
+        }
+    }
+}
+
+.footer__logo {
+
+    @media @screen-gt-m {
+        float: right;
+        transition: all .4s ease-in;
+        font-size: 0; /* лишние дробные пиксели */
+        line-height: 0;
+
+        &:hover {
+            filter: invert();
+            transition: all .2s ease-in;
+        }
+    }
+}
+
+.footer__separator {
+    width: 100%;
+    border: 0; /* гасим стили hr */
+    border-top: 1px #666 solid;
+    margin: 30px 0 15px 0;
+
+    @media @screen-gt-s {
+        margin: 30px 0 30px 0;
+    }
+}
+
+.footer__copyright {
+    color: #999;
+    margin-left: -5px;
+
+    @media @screen-gt-s {
+        margin-left: -15px;
+    }
+}
